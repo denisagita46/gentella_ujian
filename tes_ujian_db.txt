@@ -1,0 +1,190 @@
+CREATE TABLE m_jenis_ba(
+	`id` int AUTO_INCREMENT NOT NULL,
+	`name` varchar(200) NOT NULL,
+	`notes` Longtext NULL,
+	`flag_active` smallint NULL,
+	`created_by` int NOT NULL,
+	`updated_by` int NULL,
+	`created_at` datetime(3) NULL,
+	`updated_at` datetime(3) NULL,
+ CONSTRAINT `PK__m_jenis_ba` PRIMARY KEY 
+(
+	`id` ASC
+) 
+);
+/** Object:  Table [dbo].[m_status_ba]    Script Date: 6/1/2020 7:48:32 AM **/
+/* SET ANSI_NULLS ON */
+ 
+/* SET QUOTED_IDENTIFIER ON */
+ 
+CREATE TABLE m_status_ba(
+	`id` int AUTO_INCREMENT NOT NULL,
+	`name` varchar(200) NOT NULL,
+	`notes` Longtext NULL,
+	`created_by` int NOT NULL,
+	`updated_by` int NULL,
+	`created_at` datetime(3) NULL,
+	`updated_at` datetime(3) NULL,
+	`flag_active` smallint NULL,
+ CONSTRAINT `PK__m_status_ba` PRIMARY KEY 
+(
+	`id` ASC
+) 
+);
+/** Object:  Table [dbo].[m_type_ba]    Script Date: 6/1/2020 7:48:32 AM **/
+/* SET ANSI_NULLS ON */
+ 
+/* SET QUOTED_IDENTIFIER ON */
+ 
+CREATE TABLE m_type_ba(
+	`id` int AUTO_INCREMENT NOT NULL,
+	`name` varchar(200) NOT NULL,
+	`notes` Longtext NULL,
+	`created_by` int NOT NULL,
+	`updated_by` int NULL,
+	`created_at` datetime(3) NULL,
+	`updated_at` datetime(3) NULL,
+	`flag_active` smallint NULL,
+ CONSTRAINT `PK__type_ba` PRIMARY KEY 
+(
+	`id` ASC
+) 
+);
+/** Object:  Table [dbo].[sd_employee]    Script Date: 6/1/2020 7:48:32 AM **/
+/* SET ANSI_NULLS ON */
+ 
+/* SET QUOTED_IDENTIFIER ON */
+ 
+CREATE TABLE sd_employee(
+	`id` int AUTO_INCREMENT NOT NULL,
+	`status_id` int NOT NULL,
+	`sd_so_main_id` int NOT NULL,
+	`departement_id` int NOT NULL,
+	`user_id` int NOT NULL,
+	`m_company_id` int NOT NULL,
+	`sd_team_id` int NULL,
+	`gs_harcode_id` varchar(10) NULL,
+	`sd_supplier_id` varchar(10) NULL,
+	`employee_id` varchar(10) NULL,
+	`name` varchar(50) NULL,
+	`token` char(32) NULL,
+	`transaction_date` datetime(3) NULL,
+	`apk_version` nchar(10) NULL,
+	`created_at` datetime(3) NULL,
+	`updated_at` datetime(3) NULL,
+	`is_expired` date NULL,
+	`passkey` varchar(255) NULL,
+	`firebase_token` varchar(200) NULL,
+ CONSTRAINT `PK_sd_employee` PRIMARY KEY 
+(
+	`id` ASC
+) 
+);
+/** Object:  Table [dbo].[sd_so_main]    Script Date: 6/1/2020 7:48:32 AM **/
+/* SET ANSI_NULLS ON */
+ 
+/* SET QUOTED_IDENTIFIER ON */
+ 
+CREATE TABLE sd_so_main(
+	`id` int AUTO_INCREMENT NOT NULL,
+	`parent_id` int NULL,
+	`name` varchar(255) NOT NULL,
+	`type` varchar(191) NOT NULL,
+	`address` varchar(255) NULL,
+	`contact` varchar(15) NULL,
+	`coordinate` varchar(255) NULL,
+	`status_id` int NOT NULL,
+	`created_at` datetime(3) NULL,
+	`updated_at` datetime(3) NULL,
+	`level` int NULL,
+	`latitude` varchar(100) NULL,
+	`longitude` varchar(100) NULL,
+PRIMARY KEY 
+(
+	`id` ASC
+) 
+);
+/** Object:  Table [dbo].[trans_d_ba]    Script Date: 6/1/2020 7:48:32 AM **/
+/* SET ANSI_NULLS ON */
+ 
+/* SET QUOTED_IDENTIFIER ON */
+ 
+CREATE TABLE trans_d_ba(
+	`id` int AUTO_INCREMENT NOT NULL,
+	`id_trans_h_ba` int NOT NULL,
+	`asset` varchar(12) NOT NULL,
+	`asset_description` varchar(50) NULL,
+	`cost_center` varchar(10) NULL,
+	`capitalized_on` varchar(8) NULL,
+	`acquis_val` numeric(13, 2) NULL,
+	`accum_dep` numeric(13, 2) NULL,
+	`book_val` numeric(13, 2) NULL,
+	`vendor_pembeli` varchar(10) NULL,
+	`harga_penawaran` numeric(13, 2) NULL,
+	`keterangan` Longtext NULL,
+	`val_harga_jual` varchar(50) NULL,
+	`bank_incoming` varchar(50) NULL,
+	`harga_jual` numeric(13, 2) NULL,
+	`lampiran` Longtext NULL,
+	`ceklis_kelengkapan` Longtext NULL,
+	`total_cicilan` numeric(13, 2) NULL,
+	`cost_center_tujuan` varchar(10) NULL,
+	`no_asset_baru` varchar(12) NOT NULL,
+	`deskripsi_asset_baru` varchar(50) NULL,
+	`lokasi_baru` varchar(50) NULL,
+	`serial_number_baru` varchar(50) NULL,
+	`merk_baru` varchar(50) NULL,
+	`user_baru` varchar(50) NULL,
+	`id_type_table_ba` int NOT NULL,
+	`flag_active` smallint NULL,
+	`notes` Longtext NULL,
+	`created_by` int NOT NULL,
+	`updated_by` int NULL,
+	`created_at` datetime(3) NULL,
+	`updated_at` datetime(3) NULL,
+ CONSTRAINT `PK__trans_d_ba` PRIMARY KEY 
+(
+	`id` ASC
+) 
+);
+/** Object:  Table [dbo].[trans_h_ba]    Script Date: 6/1/2020 7:48:32 AM **/
+/* SET ANSI_NULLS ON */
+ 
+/* SET QUOTED_IDENTIFIER ON */
+ 
+CREATE TABLE trans_h_ba(
+	`id` int NOT NULL,
+	`trans_date` date NULL,
+	`total_asset` int NULL,
+	`id_region` varchar(50) NULL,
+	`id_depo` varchar(50) NULL,
+	`notes` Longtext NULL,
+	`id_status_ba` int NOT NULL,
+	`sap_code` varchar(50) NULL,
+	`created_by` int NOT NULL,
+	`updated_by` int NULL,
+	`created_at` datetime(3) NOT NULL,
+	`updated_at` datetime(3) NULL,
+	`approved_by` int NULL,
+	`approved_date` datetime(3) NULL,
+	`id_jenis_ba` int NOT NULL,
+ CONSTRAINT `PK__trans_h_ba` PRIMARY KEY 
+(
+	`id` ASC
+) 
+);
+/** Object:  Table [dbo].[type_so]    Script Date: 6/1/2020 7:48:32 AM **/
+/* SET ANSI_NULLS ON */
+ 
+/* SET QUOTED_IDENTIFIER ON */
+ 
+CREATE TABLE type_so(
+	`id` int AUTO_INCREMENT NOT NULL,
+	`name` varchar(255) NULL,
+	`created_at` datetime(3) NULL,
+	`updated_at` datetime(3) NULL,
+PRIMARY KEY 
+(
+	`id` ASC
+) 
+);
